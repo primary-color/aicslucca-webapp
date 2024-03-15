@@ -4,8 +4,8 @@ import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard';
 
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'myApp',
+  appId: 'io.aicslucca.tornei',
+  appName: 'Aics Lucca | tornei',
   webDir: 'dist',
   server: {
     androidScheme: 'https'

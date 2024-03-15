@@ -12,6 +12,12 @@ Use `npm` and install all packages.
 npm i
 ```
 
+## Launch in dev mode
+
+```sh
+npm run dev
+```
+
 ## Build
 
 Follow official guide, [Deploying to iOS and Android](https://ionicframework.com/docs/vue/your-first-app/deploying-mobile).

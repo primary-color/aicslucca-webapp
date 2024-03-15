@@ -1,15 +1,14 @@
 {
-  "name": "vue-ionic-primevue-template",
-  "private": true,
+  "name": "aics-lucca-webapp",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build": "vite build",
+    "start": "vite",
+    "ionic-build": "vue-tsc && ionic build && ionic cap copy && ionic cap sync",
     "add-android": "ionic cap add android",
-    "open-android": "ionic cap open android",
-    "build": "vue-tsc && ionic build && ionic cap copy && ionic cap sync",
-    "build-apk": "ionic capacitor copy android && cd android && ./gradlew assembleDebug && cd ..",
-    "preview": "vite preview"
+    "open-android": "ionic cap open android"
   },
   "dependencies": {
     "@capacitor/android": "5.7.2",
