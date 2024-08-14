@@ -4,12 +4,12 @@
       <Icon icon="material-symbols:trophy-sharp" class="mr-4" :style="{ fontSize: '2rem' }" />
       <div class="">Classifica</div>
     </div>
-    <FirstTeams :teams="getTeamsRanking" :max-teams-visible="4" class="m-4" @goToRankingPage="emit('goToRankingPage')" />
+    <FirstTeams :teams="getTeamsRanking" :max-teams-visible="6" class="m-4" @goToRankingPage="emit('goToRankingPage')" />
     <div class="text-xl font-bold px-4 pt-4 flex align-items-center">
       <Icon icon="raphael:users" class="mr-4" :style="{ fontSize: '2rem' }" />
       <div>Classifica marcatori</div>
     </div>
-    <FirstPlayers :players="playersStats" :max-players-visible="4" class="m-4" @go-to-ranking-page="emit('goToPlayersPage')" />
+    <FirstPlayers :players="playersStats" :max-players-visible="6" class="m-4" @go-to-ranking-page="emit('goToPlayersPage')" />
     <div v-if="getLatestMatchResults.length" class="p-4 surface-card mb-4">
       <div class="text-2xl font-bold text-color border-bottom-1 surface-border pb-4 mb-4">Ultimi risultati</div>
       <MatchItem v-for="(match, idx) in getLatestMatchResults" :match="match" :key="idx" class="mb-4 pb-4 border-bottom-1 surface-border"></MatchItem>

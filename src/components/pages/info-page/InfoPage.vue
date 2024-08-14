@@ -48,17 +48,6 @@
             </div>
           </template>
         </Card>
-        <Card>
-          <template #content>
-            <div class="flex align-items-center justify-content-center pb-6">
-              <span class="mr-2">Toggle theme</span>
-              <InputSwitch
-                :model-value="isDark"
-                @update:model-value="onchange"
-              />
-            </div>
-          </template>
-        </Card>
       </div>
     </PageTemplate>
   </ion-content>
@@ -70,15 +59,10 @@ import PageHeader from "@/components/PageHeader.vue";
 const image = "logo_aicslucca.png";
 import { useStore } from "@/store/main";
 import { storeToRefs } from "pinia";
-import useTheme from "@/composables/useTheme";
 
-const { isDark, toggleTheme } = useTheme();
 
 const emit = defineEmits(['onBack'])
 
-function onchange() {
-  toggleTheme();
-}
 
 const { appVersion } = storeToRefs(useStore());
 </script>

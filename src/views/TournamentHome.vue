@@ -1,9 +1,14 @@
 <template>
   <PageTemplate>
     <template #header>
-      <PageHeader :title="getTournamentName" :show-back-button="true" :show-menu-button="true"
-        @on-back="router.push({ name: 'TournamentsPage' })" @on-info-page="isOpen = true"></PageHeader>
-    <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>
+      <PageHeader :show-back-button="true" :show-image-logo="true" :show-menu-button="true"
+        @on-back="router.push({ name: 'TournamentsPage' })" @on-info-page="isOpen = true">
+        <div class="text-xl">
+          {{ tournamentDetails?.name }}
+        </div>
+        
+      </PageHeader>
+      <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>
 
     </template>
     <AppSpinnner v-if="isFetchingData" />
@@ -31,7 +36,7 @@ import AppSpinnner from "@/components/shared/AppSpinner.vue";
 import InfoPage from "@/components/pages/info-page/InfoPage.vue";
 
 const store = useStore();
-const { getTournamentName } = storeToRefs(store);
+const { tournamentDetails } = storeToRefs(store);
 
 const route = useRoute();
 const id = route.params.id as string;

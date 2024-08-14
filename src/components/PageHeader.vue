@@ -1,25 +1,22 @@
 <template>
   <div>
+    <!-- Image Logo-->
+    <div v-if="showImageLogo" class="flex align-items-center justify-content-center p-2">
+      <img :src="image" style="width: 10rem;" />
+    </div>
     <div class="grid grid-nogutter align-items-center p-2">
+      <!-- Back button-->
       <div class="col">
         <Button v-if="showBackButton" icon="pi pi-arrow-left" text rounded severity="secondary" @click="onBack" />
       </div>
       <div class="col-9">
-        <div class="text-color font-bold text-overflow-ellipsis overflow-hidden white-space-nowrap">
-          {{ title || " " }}
+        <div class="text-color font-bold text-center px-4">
+          <slot></slot>
         </div>
       </div>
       <div class="col flex justify-content-end">
-        <Button
-          v-if="showMenuButton"
-          text
-          rounded
-          severity="secondary"
-          type="button"
-          icon="pi pi-ellipsis-v"
-          @click="toggle"
-          aria-haspopup="true"
-          aria-controls="overlay_menu" />
+        <Button v-if="showMenuButton" text rounded severity="secondary" type="button" icon="pi pi-ellipsis-v"
+          @click="toggle" aria-haspopup="true" aria-controls="overlay_menu" />
         <Menu ref="menu" id="overlay_menu" :model="items" :popup="true" />
       </div>
     </div>
@@ -29,9 +26,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import type { MenuItem } from "primevue/menuitem";
-import router from "@/router";
+const image = "logo_aicslucca.png";
 
-defineProps(["title", "showBackButton", "showMenuButton"]);
+defineProps(["title", "showImageLogo", "showBackButton", "showMenuButton"]);
 const emit = defineEmits(["onBack", "onInfoPage"]);
 
 function onBack() {

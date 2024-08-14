@@ -1,6 +1,5 @@
 <template>
-  <div class="surface-card shadow-3">
-    <div class="bg-primary" style="height: 4px"></div>
+  <div class="surface-card border-1 surface-border">
     <div class="p-4">
       <slot />
     </div>

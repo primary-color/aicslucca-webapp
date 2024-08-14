@@ -1,33 +1,45 @@
 <template>
   <div class="flex flex-column h-full p-4">
-    <div class="surface-border border-bottom-1 pb-4 mb-4">
-      <div class="mb-4">
-        <IconField iconPosition="left">
-          <InputIcon>
-            <i class="pi pi-search" />
-          </InputIcon>
-          <InputText v-model="searchTerm" placeholder="Es: Amatori/dilettanti..." class="w-full" />
-        </IconField>
-      </div>
-      <Dropdown v-model="selectedCategory" :options="categories" placeholder="" />
-    </div>
-
     <div class="overflow-auto">
-      <div
-        v-ripple
-        v-for="tournament in tournamentsFiltered"
-        :key="tournament.id"
-        @click="onClickTournament(tournament)"
-        class="p-ripple surface-ground hover:surface-hover cursor-pointer w-full py-3 px-4 surface-border border-1 border-round mb-2">
-        <div class="flex justify-content-between align-items-center gap-6">
-          <div class="flex flex-column">
-            <small class="mb-2 text-color-secondary" v-if="tournament.location">
-              {{ tournament.location }}
-            </small>
-            <div class="font-bold">{{ tournament.name }}</div>
+      <div v-if="!selectedCategory">
+        <div class="flex align-items-center justify-content-center mb-4">
+          <div class="text-xl font-bold text-color">
+            SCEGLI IL TUO CAMPIONATO
           </div>
-          <div>
-            <i class="pi pi-arrow-right"></i>
+        </div>
+        <div v-ripple v-for="category in categories" :key="category"
+          class="p-ripple surface-ground hover:surface-hover cursor-pointer w-full py-3 px-4 surface-border border-1 border-round mb-2"
+          @click="selectedCategory = category">
+          <div class="flex justify-content-between align-items-center gap-6">
+            <div class="flex flex-column">
+              {{ category }}
+            </div>
+            <div>
+              <i class="pi pi-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-else>
+        <div class="flex align-items-center justify-content-center mb-4">
+          <div class="text-xl font-bold text-color">
+            SCEGLI IL TUO GIRONE DI INTERESSE
+          </div>
+        </div>
+        <div v-ripple v-for="tournament in tournamentsFiltered" :key="tournament.id"
+          class="p-ripple surface-ground hover:surface-hover cursor-pointer w-full py-3 px-4 surface-border border-1 border-round mb-2"
+          @click="onClickTournament(tournament)">
+          <div class="flex justify-content-between align-items-center gap-6">
+            <div class="flex flex-column">
+              <small class="mb-2 text-color-secondary" v-if="tournament.location">
+                {{ tournament.location }}
+              </small>
+              <div class="font-bold">{{ tournament.name }}</div>
+            </div>
+            <div>
+              <i class="pi pi-arrow-right"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -50,7 +62,7 @@ const emit = defineEmits<{
 const searchTerm = ref("");
 const searchTermDebounced = ref("");
 
-const selectedCategory = ref("CALCIO A 5");
+const selectedCategory = ref<string | null>(null);
 const categories = ref(["CALCIO A 5", "CALCIO A 7", "CALCIO A 11"]);
 
 watchDebounced(
