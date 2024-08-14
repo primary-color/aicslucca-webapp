@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-column h-full p-4">
-    <div class="overflow-auto">
+    <div>
       <div v-if="!selectedCategory">
         <div class="flex align-items-center justify-content-center mb-4">
           <div class="text-xl font-bold text-color">

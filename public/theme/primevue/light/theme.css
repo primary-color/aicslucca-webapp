@@ -6,7 +6,7 @@
   --font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   --text-color: #334155;
   --text-color-secondary: #64748b;
-  --primary-color: #3B82F6;
+  --primary-color: #0D3198;
   --primary-color-text: #ffffff;
   --surface-0: #ffffff;
   --surface-50: #f8fafc;
@@ -44,7 +44,7 @@
   --focus-ring: none;
   --maskbg: rgba(0, 0, 0, 0.4);
   --highlight-bg: #EFF6FF;
-  --highlight-text-color: #1D4ED8;
+  --highlight-text-color: #0D3198;
   --p-anchor-gutter: 2px;
   color-scheme: light;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="h-full overflow-hidden flex flex-column">
-    <div ref="elRefHeader" v-if="$slots.header" class="shadow-1 relative z-2">
+    <div ref="elRefHeader" v-if="$slots.header" class="relative z-2">
       <slot name="header" />
     </div>
     <div class="overflow-y-auto overflow-x-hidden h-full">

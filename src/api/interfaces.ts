@@ -14,6 +14,10 @@ export interface ITournamentEntry {
 }
 
 export interface ITournamentDetails {
+  text: string;
+  href: string;
+  path: string;
+  category: string;
   name: string;
   circolo: string;
   location: string;

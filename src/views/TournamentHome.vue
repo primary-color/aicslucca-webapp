@@ -3,9 +3,15 @@
     <template #header>
       <PageHeader :show-back-button="true" :show-image-logo="true" :show-menu-button="true"
         @on-back="router.push({ name: 'TournamentsPage' })" @on-info-page="isOpen = true">
-        <div class="text-xl">
+        <div class="mb-2">
+          <div class="text-color text-2xl font-bold mb-2">
+          {{ tournamentDetails?.category }}
+        </div>
+        <div class="text-color text-xl font-bold">
           {{ tournamentDetails?.name }}
         </div>
+        </div>
+
         
       </PageHeader>
       <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>

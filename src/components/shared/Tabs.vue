@@ -24,3 +24,21 @@ function onTabChange(evt: any) {
   emit('tab:change', item)
 }
 </script>
+
+
+<style scoped>
+ion-segment {
+  --background: var(--primary-color);
+}
+
+ion-segment-button{
+  --background-focused: #fff;
+  --background-hover: #fff;
+  --color: #fff;
+  --color-checked: var(--primary-color);
+  --background-checked: #fff;
+  border-radius: 4px;
+  margin: 8px 4px;
+  --indicator-height: 0px;
+}
+</style>
