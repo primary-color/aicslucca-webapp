@@ -1,22 +1,17 @@
 <template>
   <PageTemplate>
-    <template #header>
-      <PageHeader :show-back-button="true" :show-image-logo="true" :show-menu-button="true"
-        @on-back="router.push({ name: 'TournamentsPage' })" @on-info-page="isOpen = true">
-        <div class="mb-2">
-          <div class="text-color text-2xl font-bold mb-2">
+    <PageHeader :show-back-button="true" :show-image-logo="true" :show-menu-button="true"
+      @on-back="router.push({ name: 'TournamentsPage' })" @on-info-page="isOpen = true">
+      <div class="mb-2">
+        <div class="text-color font-bold mb-1">
           {{ tournamentDetails?.category }}
         </div>
-        <div class="text-color text-xl font-bold">
+        <div class="text-color">
           {{ tournamentDetails?.name }}
         </div>
-        </div>
-
-        
-      </PageHeader>
-      <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>
-
-    </template>
+      </div>
+    </PageHeader>
+    <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>
     <AppSpinnner v-if="isFetchingData" />
     <RouterView v-else></RouterView>
     <ion-modal :is-open="isOpen">

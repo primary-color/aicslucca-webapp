@@ -1,8 +1,6 @@
 <template>
   <PageTemplate>
-    <template #header>
-      <PageHeader :show-back-button="false" :show-image-logo="true" :show-menu-button="false"></PageHeader>
-    </template>
+    <PageHeader :show-back-button="false" :show-image-logo="true" :show-menu-button="false"></PageHeader>
     <AppSpinnner v-if="isFetchingData" />
     <TournamentsRoot v-else @select:tournament="onSelectTournament"  />
   </PageTemplate>

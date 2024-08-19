@@ -2,7 +2,7 @@
   <div>
     <!-- Image Logo-->
     <div v-if="showImageLogo" class="flex align-items-center justify-content-center p-2">
-      <img :src="image" style="width: 10rem;" />
+      <img :src="image" style="width: 8rem;" />
     </div>
     <div class="grid grid-nogutter align-items-center p-2">
       <!-- Back button-->
@@ -10,7 +10,7 @@
         <Button v-if="showBackButton" icon="pi pi-arrow-left" text rounded severity="secondary" @click="onBack" />
       </div>
       <div class="col-9">
-        <div class="text-color font-bold text-center px-4">
+        <div class="text-color">
           <slot></slot>
         </div>
       </div>
