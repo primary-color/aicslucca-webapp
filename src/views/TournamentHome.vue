@@ -1,6 +1,6 @@
 <template>
   <PageTemplate>
-    <PageHeader :show-back-button="true" :show-image-logo="true" :show-menu-button="true"
+    <PageHeader :show-back-button="true" :show-image-logo="true"
       @on-back="router.push({ name: 'TournamentsPage' })" @on-info-page="isOpen = true">
       <div class="mb-2">
         <div class="text-color font-bold mb-1">
@@ -14,9 +14,6 @@
     <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>
     <AppSpinnner v-if="isFetchingData" />
     <RouterView v-else></RouterView>
-    <ion-modal :is-open="isOpen">
-      <InfoPage @on-back="isOpen = false" />
-    </ion-modal>
   </PageTemplate>
 </template>
 
