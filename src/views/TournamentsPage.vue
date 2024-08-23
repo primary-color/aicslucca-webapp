@@ -1,7 +1,10 @@
 <template>
   <HomeTemplate>
     <template #navbar>
-      <AppNav :items="items" @nav-item="onNavItem">
+      <AppNav :items="itemsNav" @nav-item="onNavItem">
+        <template #header>
+          <h1 class="text-xl">Aics Lucca</h1>
+        </template>
         <template #footer>
           <div class="flex w-full justify-content-center p-3">
             <DonateButton/>
@@ -12,6 +15,7 @@
     <div class="p-4">
       <TournamentsRoot @select:tournament="onSelectTournament"  />
     </div>
+    <AppSpinnner v-if="isFetchingData" />
   </HomeTemplate>
 </template>
 
@@ -21,11 +25,8 @@ import { useStore } from "@/store/main";
 import router from "@/router";
 import TournamentsRoot from "@/components/pages/tournaments/TournamentsRoot.vue";
 import AppSpinnner from "@/components/shared/AppSpinner.vue";
-import PageHeader from "@/components/PageHeader.vue";
-import PageTemplate from "@/components/layout/PageTemplate.vue";
 import HomeTemplate from "@/components/layout/HomeTemplate.vue";
 import AppNav from '@/components/shared/AppNav.vue';
-import AppLogo from "@/components/shared/AppLogo.vue";
 import DonateButton from "@/components/shared/DonateButton.vue";
 
 
@@ -43,26 +44,21 @@ onBeforeMount(async () => {
   isFetchingData.value = false;
 });
 
-const items = ref([
+const itemsNav = ref([
   {
     label: 'Campionati',
     id: 'tournaments',
-    icon: 'pi pi-fw pi-home',
+    icon: 'ion:football-outline',
   },
   {
-    label: 'Tab 2',
-    id: 'tab2',
-    icon: 'pi pi-fw pi-user',
-  },
-  {
-    label: 'Tab 3',
-    id: 'tab3',
-    icon: 'pi pi-fw pi-cog',
+    label: 'Informazioni',
+    id: 'info',
+    icon: 'material-symbols:info-outline',
   },
 ]);
 
 function onNavItem(id: string) {
-  console.log(id);
+  router.push({ name: 'TournamentsPage' });
 }
 </script>
 

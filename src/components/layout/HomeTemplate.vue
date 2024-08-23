@@ -8,13 +8,15 @@
     <!-- Main container -->
     <div class="relative flex flex-column h-full max-w-full flex-1 flex-col overflow-hidden">
       <!--Header container-->
-      <div style="height: 60px" class=" w-full flex align-items-center gap-4">
+      <div style="height: 60px" class=" w-full flex align-items-center gap-4 lg:hidden">
         <div class="block lg:hidden px-4">
-          <Button icon="pi pi-bars" @click="visible = true" rounded severity="secondary" text aria-label="Menu"   />
+          <Button icon="pi pi-bars" @click="visible = true" rounded severity="secondary" text aria-label="Menu" />
         </div>
       </div>
-      <!--Content container-->
-      <slot/>
+      <div class="overflow-y-auto">
+        <!--Content container-->
+        <slot />
+      </div>
     </div>
   </div>
   <!--Mobile Sidebar container-->
