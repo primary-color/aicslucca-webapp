@@ -2,7 +2,7 @@
   <div class="flex flex-column h-full p-4">
     <div>
       <div v-if="!selectedCategory">
-        <div class="flex align-items-center justify-content-center mb-4">
+        <div class="flex align-items-center mb-5">
           <div class="text-xl font-bold text-color">
             SCEGLI IL TUO CAMPIONATO
           </div>
@@ -22,8 +22,8 @@
       </div>
 
       <div v-else>
-        <div class="flex align-items-center justify-content-center mb-4">
-          <div class="text-xl font-bold text-color">
+        <div class="flex mb-4">
+          <div class="text-xl font-bold text-color mb-5 flex align-items-center">
             SCEGLI IL TUO GIRONE DI INTERESSE
           </div>
         </div>

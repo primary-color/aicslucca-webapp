@@ -12,7 +12,7 @@
         </template>
       </AppNav>
     </template>
-    <div class="p-4">
+    <div>
       <TournamentsRoot @select:tournament="onSelectTournament"  />
     </div>
     <AppSpinnner v-if="isFetchingData" />
