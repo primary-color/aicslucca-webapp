@@ -1,9 +1,22 @@
 <template>
-  <PageTemplate>
-    <PageHeader :show-back-button="false" :show-image-logo="true" :show-menu-button="false"></PageHeader>
+  <HomeTemplate>
+    <template #navbar>
+      <AppNav :items="itemsNav" @nav-item="onNavItem">
+        <template #header>
+          <h1 class="text-xl">Aics Lucca</h1>
+        </template>
+        <template #footer>
+          <div class="flex w-full justify-content-center p-3">
+            <DonateButton/>
+          </div>
+        </template>
+      </AppNav>
+    </template>
+    <div class="p-4">
+      <TournamentsRoot @select:tournament="onSelectTournament"  />
+    </div>
     <AppSpinnner v-if="isFetchingData" />
-    <TournamentsRoot v-else @select:tournament="onSelectTournament"  />
-  </PageTemplate>
+  </HomeTemplate>
 </template>
 
 <script lang="ts" setup>
@@ -12,8 +25,10 @@ import { useStore } from "@/store/main";
 import router from "@/router";
 import TournamentsRoot from "@/components/pages/tournaments/TournamentsRoot.vue";
 import AppSpinnner from "@/components/shared/AppSpinner.vue";
-import PageHeader from "@/components/PageHeader.vue";
-import PageTemplate from "@/components/layout/PageTemplate.vue";
+import HomeTemplate from "@/components/layout/HomeTemplate.vue";
+import AppNav from '@/components/shared/AppNav.vue';
+import DonateButton from "@/components/shared/DonateButton.vue";
+
 
 const mainStore = useStore();
 
@@ -28,6 +43,23 @@ onBeforeMount(async () => {
   await mainStore.fecthTournaments();
   isFetchingData.value = false;
 });
+
+const itemsNav = ref([
+  {
+    label: 'Campionati',
+    id: 'tournaments',
+    icon: 'ion:football-outline',
+  },
+  {
+    label: 'Informazioni',
+    id: 'info',
+    icon: 'material-symbols:info-outline',
+  },
+]);
+
+function onNavItem(id: string) {
+  router.push({ name: 'TournamentsPage' });
+}
 </script>
 
 <style scoped></style>

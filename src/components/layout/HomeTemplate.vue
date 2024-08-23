@@ -1,15 +1,44 @@
 <template>
-  <div class="h-full overflow-hidden flex flex-column">
-    <div ref="elRefHeader" v-if="$slots.header" class="relative z-2">
-      <slot name="header" />
+  <!--Root container-->
+  <div class="relative flex h-full w-full overflow-hidden z-0">
+    <!--Sidebar container-->
+    <div class="flex-shrink-0 hidden lg:block overflow-x-hidden surface-border bg-primary-900" style="width: 260px">
+      <slot name="navbar"></slot>
     </div>
-    <div class="overflow-y-auto overflow-x-hidden h-full">
-      <slot />
-    </div>
-    <div ref="elRefFooter" class="sticky bottom-0 bg-primary-50 border-top-1 surface-border">
-      <slot name="footer" />
+    <!-- Main container -->
+    <div class="relative flex flex-column h-full max-w-full flex-1 flex-col overflow-hidden">
+      <!--Header container-->
+      <div style="height: 60px" class=" w-full flex align-items-center gap-4 lg:hidden">
+        <div class="block lg:hidden px-4">
+          <Button icon="pi pi-bars" @click="visible = true" rounded severity="secondary" text aria-label="Menu" />
+        </div>
+      </div>
+      <div class="overflow-y-auto">
+        <!--Content container-->
+        <slot />
+      </div>
     </div>
   </div>
+  <!--Mobile Sidebar container-->
+  <Sidebar v-model:visible="visible" class="block lg:hidden" :show-close-icon="false" style="width: 260px" :pt="{
+    root: {
+      class: 'bg-primary-900 border-none'
+    },
+    header: {
+      class: 'p-0'
+    },
+    content: {
+      class: 'p-0'
+    }
+  }">
+    <slot name="navbar"></slot>
+  </Sidebar>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue"
+
+const visible = ref(false);
+
+
+</script>

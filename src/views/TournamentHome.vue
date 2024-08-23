@@ -1,23 +1,34 @@
 <template>
-  <PageTemplate>
-    <PageHeader :show-back-button="true" :show-image-logo="true" :show-menu-button="true"
-      @on-back="router.push({ name: 'TournamentsPage' })" @on-info-page="isOpen = true">
-      <div class="mb-2">
-        <div class="text-color font-bold mb-1">
-          {{ tournamentDetails?.category }}
-        </div>
-        <div class="text-color">
-          {{ tournamentDetails?.name }}
-        </div>
+  <HomeTemplate>
+    <template #navbar>
+      <AppNav :items="itemsNav" @nav-item="onNavItem">
+        <template #header>
+          <h1 class="text-xl">Aics Lucca</h1>
+        </template>
+        <template #footer>
+          <div class="flex w-full justify-content-center p-3">
+            <DonateButton />
+          </div>
+        </template>
+      </AppNav>
+    </template>
+    <div>
+      <div class="mb-4 p-4">
+        <div class="text-xl">
+        {{ tournamentDetails?.name }}
       </div>
-    </PageHeader>
-    <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>
+      <div class="text-color-secondary">
+        {{ tournamentDetails?.category }}
+      </div>
+      </div>
+
+      <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>
+      <AppSpinnner v-if="isFetchingData" />
+      <RouterView v-else></RouterView>
+    </div>
     <AppSpinnner v-if="isFetchingData" />
-    <RouterView v-else></RouterView>
-    <ion-modal :is-open="isOpen">
-      <InfoPage @on-back="isOpen = false" />
-    </ion-modal>
-  </PageTemplate>
+  </HomeTemplate>
+
 </template>
 
 <script lang="ts" setup>
@@ -35,6 +46,11 @@ import PageHeader from "@/components/PageHeader.vue";
 import type { MenuItem } from "primevue/menuitem";
 import AppSpinnner from "@/components/shared/AppSpinner.vue";
 import InfoPage from "@/components/pages/info-page/InfoPage.vue";
+import HomeTemplate from "@/components/layout/HomeTemplate.vue";
+import AppNav from '@/components/shared/AppNav.vue';
+import DonateButton from "@/components/shared/DonateButton.vue";
+
+
 
 const store = useStore();
 const { tournamentDetails } = storeToRefs(store);
@@ -57,6 +73,20 @@ const items: MenuItem[] = [
   { label: "Giornate", key: "CalendarPage" },
 ];
 
+const itemsNav = ref([
+  {
+    label: 'Campionati',
+    id: 'tournaments',
+    icon: 'ion:football-outline',
+  },
+  {
+    label: 'Informazioni',
+    id: 'info',
+    icon: 'material-symbols:info-outline',
+  },
+]);
+
+
 const activeItemKey = computed(
   () => items.find((i) => i.key === route.name)?.key || ""
 );
@@ -66,6 +96,10 @@ function onChangeTab(item: MenuItem) {
 }
 
 const isFetchingData = ref(false);
+
+function onNavItem(id: string) {
+  router.push({ name: 'TournamentsPage' });
+}
 
 onBeforeMount(async () => {
   isFetchingData.value = true;
