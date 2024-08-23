@@ -13,14 +13,15 @@
       </AppNav>
     </template>
     <div>
-      <div class="mb-4 p-4">
+      <div class="px-4 my-3">
         <div class="text-xl">
-        {{ tournamentDetails?.name }}
+          {{ tournamentDetails?.name }}
+        </div>
+        <div class="text-color-secondary">
+          {{ tournamentDetails?.category }}
+        </div>
       </div>
-      <div class="text-color-secondary">
-        {{ tournamentDetails?.category }}
-      </div>
-      </div>
+      <Divider style="margin: 0px;" ></Divider>
 
       <Tabs :items="items" :active-item-key="activeItemKey" @tab:change="onChangeTab"></Tabs>
       <AppSpinnner v-if="isFetchingData" />
