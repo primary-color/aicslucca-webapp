@@ -10,7 +10,7 @@
       </AppNav>
     </template>
     <div class="p-4">
-      ciap
+      <TournamentsRoot @select:tournament="onSelectTournament"  />
     </div>
   </HomeTemplate>
 </template>
