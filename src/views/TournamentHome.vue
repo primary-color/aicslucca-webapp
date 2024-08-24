@@ -13,13 +13,8 @@
       </AppNav>
     </template>
     <div>
-      <div class="px-4 my-3">
-        <div class="text-xl">
-          {{ tournamentDetails?.name }}
-        </div>
-        <div class="text-color-secondary">
-          {{ tournamentDetails?.category }}
-        </div>
+      <div class="px-4 my-2">
+        <AppBreadcrumb :items="breadcrumbItems" class="my-4" @item="onClickBreadcrumbItem"/>
       </div>
       <Divider style="margin: 0px;" ></Divider>
 
@@ -50,7 +45,7 @@ import InfoPage from "@/components/pages/info-page/InfoPage.vue";
 import HomeTemplate from "@/components/layout/HomeTemplate.vue";
 import AppNav from '@/components/shared/AppNav.vue';
 import DonateButton from "@/components/shared/DonateButton.vue";
-
+import AppBreadcrumb from "@/components/shared/AppBreadcrumb.vue";
 
 
 const store = useStore();
@@ -109,4 +104,14 @@ onBeforeMount(async () => {
   await store.fetchTournamentCalendar(id, 1);
   isFetchingData.value = false;
 });
+
+const breadcrumbItems = computed(() => {
+  const items:any[] = [{icon: 'pi pi-home'}];
+  tournamentDetails.value ? items.push(...[tournamentDetails.value.category, tournamentDetails.value.name]) : []
+  return items.map((item, idx) => (idx !== 0 ? { label: item, route: '/tournaments/' }: item))
+})
+
+function onClickBreadcrumbItem(item: any) {
+  router.push({ name: 'TournamentsPage' });
+}
 </script>

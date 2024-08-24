@@ -8,9 +8,9 @@
     <!-- Main container -->
     <div class="relative flex flex-column h-full max-w-full flex-1 flex-col overflow-hidden">
       <!--Header container-->
-      <div style="height: 4rem" class="py-4 w-full flex align-items-center gap-4 lg:hidden shadow-1">
-        <div class="block lg:hidden px-4 ">
-          <Button icon="pi pi-bars" @click="visible = true" outlined severity="secondary" text aria-label="Menu" />
+      <div style="height: 4rem" class="w-full flex align-items-center gap-4 lg:hidden border-bottom-1 surface-border">
+        <div class="block lg:hidden px-2 ">
+          <Button icon="pi pi-bars" @click="visible = true" severity="secondary" text aria-label="Menu" />
         </div>
       </div>
       <div class="overflow-y-auto">

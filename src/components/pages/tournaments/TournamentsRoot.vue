@@ -2,7 +2,8 @@
   <div class="flex flex-column h-full p-4">
     <div>
       <div v-if="!selectedCategory">
-        <div class="flex align-items-center mb-5">
+        <div class="flex flex-column mb-2">
+          <AppBreadcrumb :items="breadcrumbItems" class="mb-4" @item="onClickBreadcrumbItem"/>
           <div class="text-xl font-bold text-color">
             SCEGLI IL TUO CAMPIONATO
           </div>
@@ -22,8 +23,9 @@
       </div>
 
       <div v-else>
-        <div class="flex mb-4">
-          <div class="text-xl font-bold text-color mb-5 flex align-items-center">
+        <div class="flex flex-column mb-4">
+          <AppBreadcrumb :items="breadcrumbItems" class="mb-4" @item="onClickBreadcrumbItem"/>
+          <div class="text-xl font-bold text-color mb-2 flex align-items-center">
             SCEGLI IL TUO GIRONE DI INTERESSE
           </div>
         </div>
@@ -52,6 +54,7 @@ import { computed, ref } from "vue";
 import { useStore } from "@/store/main";
 import { storeToRefs } from "pinia";
 import { watchDebounced } from "@vueuse/core";
+import AppBreadcrumb from "@/components/shared/AppBreadcrumb.vue";
 
 const mainStore = useStore();
 const { tournaments } = storeToRefs(mainStore);
@@ -80,6 +83,21 @@ const tournamentsFiltered = computed(() =>
 function onClickTournament(t: any) {
   emit("select:tournament", t.id);
 }
+
+
+const breadcrumbItems = computed(() => {
+  const items:any[] = [{icon: 'pi pi-home'}];
+  selectedCategory.value ? items.push(selectedCategory.value) : []
+  return items.map((item, idx) => (idx !== 0 ? { label: item, route: '/tournaments/' }: item))
+})
+
+
+
+function onClickBreadcrumbItem(item: any) {
+  selectedCategory.value = null
+}
+
+
 </script>
 
 <style scoped></style>
