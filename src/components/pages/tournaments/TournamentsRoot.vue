@@ -4,7 +4,7 @@
       <div v-if="!selectedCategory">
         <div class="flex flex-column mb-2">
           <AppBreadcrumb :items="breadcrumbItems" class="mb-4" @item="onClickBreadcrumbItem"/>
-          <div class="text-xl font-bold text-color">
+          <div class="text-xl font-bold mb-2 text-color">
             SCEGLI IL TUO CAMPIONATO
           </div>
         </div>
