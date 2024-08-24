@@ -4,7 +4,7 @@
       <div v-if="!selectedCategory">
         <div class="flex flex-column mb-2">
           <AppBreadcrumb :items="breadcrumbItems" class="mb-4" @item="onClickBreadcrumbItem"/>
-          <div class="text-xl font-bold mb-2 text-color">
+          <div class="text-primary text-xl font-bold mb-2">
             SCEGLI IL TUO CAMPIONATO
           </div>
         </div>
@@ -16,7 +16,7 @@
               {{ category }}
             </div>
             <div>
-              <i class="pi pi-arrow-right"></i>
+              <i class="pi pi-arrow-right font-semibold text-primary"></i>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
       <div v-else>
         <div class="flex flex-column mb-4">
           <AppBreadcrumb :items="breadcrumbItems" class="mb-4" @item="onClickBreadcrumbItem"/>
-          <div class="text-xl font-bold text-color mb-2 flex align-items-center">
+          <div class="text-primary text-xl font-bold mb-2">
             SCEGLI IL TUO GIRONE DI INTERESSE
           </div>
         </div>
@@ -39,8 +39,8 @@
               </small>
               <div class="font-bold">{{ tournament.name }}</div>
             </div>
-            <div>
-              <i class="pi pi-arrow-right"></i>
+            <div class="text-primary">
+              <i class="pi pi-arrow-right text-primary font-semibold"></i>
             </div>
           </div>
         </div>
