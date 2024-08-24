@@ -1,7 +1,7 @@
 <template>
   <HomeTemplate>
-    <template #navbar>
-      <AppNav :items="itemsNav" @nav-item="onNavItem">
+    <template #navbar="navProps">
+      <AppNav :items="itemsNav" @nav-item="(evt) => onNavItem(evt)">
         <template #header>
           <h1 class="text-xl">Aics Lucca</h1>
         </template>
@@ -13,9 +13,9 @@
       </AppNav>
     </template>
     <div>
-      <TournamentsRoot @select:tournament="onSelectTournament"  />
+      <AppSpinnner v-if="isFetchingData" />
+      <TournamentsRoot v-else @select:tournament="onSelectTournament"  />
     </div>
-    <AppSpinnner v-if="isFetchingData" />
   </HomeTemplate>
 </template>
 
@@ -57,7 +57,7 @@ const itemsNav = ref([
   },
 ]);
 
-function onNavItem(id: string) {
+function onNavItem(evt: any) {
   router.push({ name: 'TournamentsPage' });
 }
 </script>

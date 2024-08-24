@@ -3,7 +3,7 @@
   <div class="relative flex h-full w-full overflow-hidden z-0">
     <!--Sidebar container-->
     <div class="flex-shrink-0 hidden lg:block overflow-x-hidden surface-border bg-primary-900" style="width: 18rem">
-      <slot name="navbar"></slot>
+      <slot name="navbar" :closeSidebar="closeSidebar"></slot>
     </div>
     <!-- Main container -->
     <div class="relative flex flex-column h-full max-w-full flex-1 flex-col overflow-hidden">
@@ -39,6 +39,6 @@
 import { ref } from "vue"
 
 const visible = ref(false);
-
+const closeSidebar = () => visible.value = false
 
 </script>
