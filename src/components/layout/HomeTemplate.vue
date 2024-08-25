@@ -31,7 +31,7 @@
       class: 'p-0'
     }
   }">
-    <slot name="navbar"></slot>
+    <slot name="navbar" :closeSidebar="closeSidebar"></slot>
   </Sidebar>
 </template>
 

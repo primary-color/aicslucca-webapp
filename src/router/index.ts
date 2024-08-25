@@ -7,12 +7,18 @@ const tournamentDashboardPage = () => import("@/views/tournament/TournamentDashb
 const tournamentRankingsPage = () => import("@/views/tournament/TournamentRankingPage.vue");
 const tournamentPlayersStatsPage = () => import("@/views/tournament/TournamentPlayersStatsPage.vue");
 const tournamentCalendarPage = () => import("@/views/tournament/TournamentCalendarPage.vue");
+const infoPage = () => import("@/views/InfoPage.vue");
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "RootPage",
     redirect: "/tournaments",
+  },
+  {
+    path: "/info",
+    name: "InfoPage",
+    component: infoPage,
   },
   {
     path: "/tournaments",

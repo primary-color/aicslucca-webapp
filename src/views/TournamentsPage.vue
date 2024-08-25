@@ -1,22 +1,8 @@
 <template>
-  <HomeTemplate>
-    <template #navbar="navProps">
-      <AppNav :items="itemsNav" @nav-item="(evt) => onNavItem(evt)">
-        <template #header>
-          <h1 class="text-xl">Aics Lucca</h1>
-        </template>
-        <template #footer>
-          <div class="flex w-full justify-content-center p-3">
-            <DonateButton/>
-          </div>
-        </template>
-      </AppNav>
-    </template>
-    <div>
-      <AppSpinnner v-if="isFetchingData"/>
-      <TournamentsRoot v-else @select:tournament="onSelectTournament"  />
-    </div>
-  </HomeTemplate>
+  <div>
+    <AppSpinnner v-if="isFetchingData" />
+    <TournamentsRoot v-else @select:tournament="onSelectTournament" />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -25,9 +11,6 @@ import { useStore } from "@/store/main";
 import router from "@/router";
 import TournamentsRoot from "@/components/pages/tournaments/TournamentsRoot.vue";
 import AppSpinnner from "@/components/shared/AppSpinner.vue";
-import HomeTemplate from "@/components/layout/HomeTemplate.vue";
-import AppNav from '@/components/shared/AppNav.vue';
-import DonateButton from "@/components/shared/DonateButton.vue";
 
 
 const mainStore = useStore();
