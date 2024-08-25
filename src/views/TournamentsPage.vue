@@ -13,7 +13,7 @@
       </AppNav>
     </template>
     <div>
-      <AppSpinnner v-if="isFetchingData" />
+      <AppSpinnner v-if="isFetchingData"/>
       <TournamentsRoot v-else @select:tournament="onSelectTournament"  />
     </div>
   </HomeTemplate>
